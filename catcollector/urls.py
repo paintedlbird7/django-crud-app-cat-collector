@@ -18,8 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
 
+from main_app import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main_app.urls')), # Mounts main_app's routes at the root URL
+    path('about/', views.about, name='about'),  # new route for about page
 ]
