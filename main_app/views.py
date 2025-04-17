@@ -15,4 +15,3 @@ def about(request):
 def about(request):
     return render(request, 'about.html')
 
-#TODO: left off at Template inheritance (Partials)
