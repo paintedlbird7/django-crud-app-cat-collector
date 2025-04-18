@@ -28,7 +28,9 @@ def home(request):
 
 class CatCreate(CreateView):
     model = Cat
-    # fields = '__all__'
-    fields = ['name', 'breed', 'description', 'age']
+    fields = '__all__'
+    # fields = ['name', 'breed', 'description', 'age']
+    # success_url = '/cats/'
+
 
 
