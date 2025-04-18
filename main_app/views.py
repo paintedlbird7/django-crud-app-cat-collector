@@ -6,6 +6,8 @@ from .models import Cat
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import FeedingForm
 from django.shortcuts import render, redirect
+from .models import Cat, Toy
+
 
 def cat_index(request):
     cats = Cat.objects.all()
@@ -62,5 +64,7 @@ def add_feeding(request, cat_id):
         new_feeding.save()
     return redirect('cat-detail', cat_id=cat_id)
 
-
+class ToyCreate(CreateView):
+    model = Toy
+    fields = '__all__'
 
