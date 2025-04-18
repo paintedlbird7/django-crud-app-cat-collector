@@ -7,7 +7,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import FeedingForm
 from django.shortcuts import render, redirect
 from .models import Cat, Toy
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView 
 
 def cat_index(request):
     cats = Cat.objects.all()
@@ -67,4 +68,10 @@ def add_feeding(request, cat_id):
 class ToyCreate(CreateView):
     model = Toy
     fields = '__all__'
+
+class ToyList(ListView):
+    model = Toy
+
+class ToyDetail(DetailView):
+    model = Toy
 
