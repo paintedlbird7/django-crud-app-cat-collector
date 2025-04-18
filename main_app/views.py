@@ -1,8 +1,7 @@
+# views.py
 from django.http import HttpResponse
 from django.shortcuts import render
-
-# views.py
-
+from django.views.generic.edit import CreateView
 from .models import Cat
 
 def cat_index(request):
@@ -12,7 +11,6 @@ def cat_index(request):
 def cat_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
     return render(request, 'cats/detail.html', {'cat': cat})
-
 
 # Define the home view function
 def home(request):
@@ -27,5 +25,10 @@ def about(request):
 
 def home(request):
     return render(request, 'home.html')
+
+class CatCreate(CreateView):
+    model = Cat
+    # fields = '__all__'
+    fields = ['name', 'breed', 'description', 'age']
 
 

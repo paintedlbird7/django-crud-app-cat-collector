@@ -28,7 +28,8 @@
 <section class="card-container">
     {% for cat in cats %}
       <div class="card">
-        <a href="/cats/{{ cat.id }}">
+        {% comment %} <a href="/cats/{{ cat.id }}"> {% endcomment %}
+         <a href="{% url 'cat-detail' cat.id %}">
           <div class="card-content">
             <div class="card-img-container">
               <img
