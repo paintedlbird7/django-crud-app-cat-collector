@@ -4,14 +4,21 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from .models import Cat
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import FeedingForm
 
 def cat_index(request):
     cats = Cat.objects.all()
     return render(request, 'cats/index.html', {'cats': cats})
 
+# update this view function
 def cat_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
-    return render(request, 'cats/detail.html', {'cat': cat})
+    # instantiate FeedingForm to be rendered in the template
+    feeding_form = FeedingForm()
+    return render(request, 'cats/detail.html', {
+        # include the cat and feeding_form in the context
+        'cat': cat, 'feeding_form': feeding_form
+    })
 
 # Define the home view function
 def home(request):

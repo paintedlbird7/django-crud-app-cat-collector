@@ -1,9 +1,9 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/cats/cat-detail.css' %}" />
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
 <section class="cat-container">
@@ -18,7 +18,7 @@
       <h2>A {{ cat.breed }} kitten.</h2>
     {% endif %}
     <p>{{ cat.description }}</p>
-  
+
     <div class="cat-actions">
       <a href="{% url 'cat-update' cat.id %}" class="btn warn">Edit</a>
       <a href="{% url 'cat-delete' cat.id %}" class="btn danger">Delete</a>
@@ -33,6 +33,14 @@
         <img src="{% static 'images/cat-onigiri.svg' %}" alt="A cat as onigiri" />
         <img src="{% static 'images/kitty-kabob.svg' %}" alt="A kabob of kittens" />
       </div>
+
+      <h3>Add a Feeding</h3>
+      <form method="post" class="subsection-content" autocomplete="off">
+        {% csrf_token %}
+        {{ feeding_form.as_p }}
+        <button type="submit" class="btn submit">Add Feeding</button>
+      </form>
+
       <table>
         <thead>
           <tr>
