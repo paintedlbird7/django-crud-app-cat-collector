@@ -47,22 +47,30 @@
       </form>
       
 
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Meal</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for feeding in cat.feeding_set.all %}
-            <tr>
-              <td>{{ feeding.date }}</td>
-              <td>{{ feeding.get_meal_display }}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <h3>Past Feedings</h3>
+{% if cat.feeding_set.all.count %}
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Meal</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for feeding in cat.feeding_set.all %}
+      <tr>
+        <td>{{ feeding.date }}</td>
+        <td>{{ feeding.get_meal_display }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="subsection-content">
+    <p>⚠️ {{ cat.name }} has not been fed!</p>
+  </div>
+{% endif %}
+
     </section>
   </div>
 </section>
