@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from .models import Cat
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def cat_index(request):
     cats = Cat.objects.all()
@@ -32,5 +33,13 @@ class CatCreate(CreateView):
     # fields = ['name', 'breed', 'description', 'age']
     # success_url = '/cats/'
 
+class CatUpdate(UpdateView):
+    model = Cat
+    # Let's disallow the renaming of a cat by excluding the name field!
+    fields = ['breed', 'description', 'age']
+
+class CatDelete(DeleteView):
+    model = Cat
+    success_url = '/cats/'
 
 
