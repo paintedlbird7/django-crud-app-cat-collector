@@ -35,11 +35,17 @@
       </div>
 
       <h3>Add a Feeding</h3>
-      <form method="post" class="subsection-content" autocomplete="off">
-        {% csrf_token %}
+      <form
+        action="{% url 'add-feeding' cat.id %}"
+        method="post"
+        class="subsection-content"
+        autocomplete="off"
+      >
+        {% csrf_token %} 
         {{ feeding_form.as_p }}
         <button type="submit" class="btn submit">Add Feeding</button>
       </form>
+      
 
       <table>
         <thead>
