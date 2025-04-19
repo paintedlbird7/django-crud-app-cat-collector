@@ -9,6 +9,8 @@ from django.shortcuts import render, redirect
 from .models import Cat, Toy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView 
+from django.shortcuts import redirect, get_object_or_404
+from .models import Cat, Toy
 
 def cat_index(request):
     cats = Cat.objects.all()
@@ -90,3 +92,9 @@ def associate_toy(request, cat_id, toy_id):
     # Note that you can pass a toy's id instead of the whole object
     Cat.objects.get(id=cat_id).toys.add(toy_id)
     return redirect('cat-detail', cat_id=cat_id)
+
+def remove_toy(request, cat_id, toy_id):
+    cat = get_object_or_404(Cat, id=cat_id)
+    toy = get_object_or_404(Toy, id=toy_id)
+    cat.toys.remove(toy)  # This assumes a ManyToManyField between Cat and Toy
+    return redirect('cat-detail', cat_id=cat.id)
