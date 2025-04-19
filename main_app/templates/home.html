@@ -13,5 +13,28 @@
     </div>
     <img src="{% static 'images/logotype.svg' %}" alt="Text reads: Cat Collector" />
   </section>
+
+  <!-- First Login Form -->
+  <section>
+    <form action="{% url 'home' %}" method="post" class="login">
+      <h1>Login</h1>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <button type="submit" class="btn submit">Login</button>
+    </form>
+  </section>
+
+  <!-- Add a New Form Section Here if Needed -->
+  <section>
+    <form action="{% url 'home' %}" method="post" class="login">
+      <h1>Login</h1>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <button type="submit" class="btn submit">Login</button>
+    </form>
+  </section>
+
 </main>
 {% endblock %}

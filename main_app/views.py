@@ -11,6 +11,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView 
 from django.shortcuts import redirect, get_object_or_404
 from .models import Cat, Toy
+from django.contrib.auth.views import LoginView
+
 
 def cat_index(request):
     cats = Cat.objects.all()
@@ -41,6 +43,9 @@ def about(request):
 
 def about(request):
     return render(request, 'about.html')
+
+class Home(LoginView):
+    template_name = 'home.html'
 
 def home(request):
     return render(request, 'home.html')
