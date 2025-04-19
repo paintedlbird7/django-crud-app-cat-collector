@@ -50,6 +50,14 @@ class Home(LoginView):
 def home(request):
     return render(request, 'home.html')
 
+from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render
+
+def home(request):
+    form = AuthenticationForm()
+    return render(request, 'home.html', {'form': form})
+
+
 class CatCreate(CreateView):
     model = Cat
     fields = ['name', 'breed', 'description', 'age']

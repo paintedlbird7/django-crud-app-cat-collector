@@ -25,7 +25,7 @@
     </form>
   </section>
 
-  <!-- Add a New Form Section Here if Needed -->
+  {% comment %} <!-- Add a New Form Section Here if Needed -->
   <section>
     <form action="{% url 'home' %}" method="post" class="login">
       <h1>Login</h1>
@@ -34,7 +34,7 @@
       <input type="hidden" name="next" value="{{ next }}" />
       <button type="submit" class="btn submit">Login</button>
     </form>
-  </section>
+  </section> {% endcomment %}
 
 </main>
 {% endblock %}
