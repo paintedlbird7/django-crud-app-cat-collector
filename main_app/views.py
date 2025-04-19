@@ -17,11 +17,12 @@ def cat_index(request):
 # update this view function
 def cat_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
-    # instantiate FeedingForm to be rendered in the template
+    toys = Toy.objects.all()  # Fetch all toys
     feeding_form = FeedingForm()
     return render(request, 'cats/detail.html', {
-        # include the cat and feeding_form in the context
-        'cat': cat, 'feeding_form': feeding_form
+        'cat': cat,
+        'feeding_form': feeding_form,
+        'toys': toys  # Pass toys to the template
     })
 
 # Define the home view function
@@ -40,9 +41,7 @@ def home(request):
 
 class CatCreate(CreateView):
     model = Cat
-    fields = '__all__'
-    # fields = ['name', 'breed', 'description', 'age']
-    # success_url = '/cats/'
+    fields = ['name', 'breed', 'description', 'age']
 
 class CatUpdate(UpdateView):
     model = Cat

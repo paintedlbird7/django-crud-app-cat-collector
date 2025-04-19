@@ -72,6 +72,29 @@
 {% endif %}
 
     </section>
+      
+      <section class="toys">
+        <div class="subsection-title">
+          <h2>Toys</h2>
+          <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+          <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+          <img src="{% static 'images/fish.svg' %}" alt="A fishy toy" />
+        </div>
+        <h3>Available Toys</h3>
+        <div class="subsection-content">
+          {% for toy in toys %}
+            <div class="toy-container">
+              <div class="color-block" style="background-color: {{ toy.color }}"></div>
+              <p>{{ toy.color }} {{ toy.name }}</p>
+              <form action="" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn submit">Give Toy</button>
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+      
   </div>
 </section>
 {% endblock %}
