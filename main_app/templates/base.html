@@ -26,13 +26,18 @@
       </div>
       <nav>
         <ul>
+          {% if user.is_authenticated %}
             <li><a href="{% url 'cat-index' %}">All Cats</a></li>
             <li><a href="{% url 'toy-index' %}">All Toys</a></li>
             <li><a href="{% url 'cat-create' %}">Add a Cat</a></li>
             <li><a href="{% url 'toy-create' %}">Add a Toy</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>            
+            <li><a href="{% url 'about' %}">About</a></li>
+          {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+          {% endif %}
         </ul>
-      </nav>
+      </nav>      
     </header>
     <main>
      {% block content %} 
@@ -42,7 +47,8 @@
 </html>
 
 {% comment %} TODO: 
-#TODO: left at Adding URLs for authentication
+#TODO: left at Specifying the default redirect after logging in
+TODO: login doesn't see their cat index page in Specifying the default redirect after logging in and the form disappears
 {% endcomment %}
 
 

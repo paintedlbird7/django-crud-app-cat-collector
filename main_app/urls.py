@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 from . import views # Import views to connect routes to view functions
 
 urlpatterns = [
@@ -23,6 +23,7 @@ urlpatterns = [
     path('cats/<int:cat_id>/associate-toy/<int:toy_id>/', views.associate_toy, name='associate-toy'),
     path('cats/<int:cat_id>/remove-toy/<int:toy_id>/', views.remove_toy, name='remove-toy'),
     path('', views.Home.as_view(), name='home'),
+    # path('accounts/', include('django.contrib.auth.urls')), 
 
 ]
 
