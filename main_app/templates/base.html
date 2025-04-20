@@ -35,7 +35,9 @@
           {% else %}
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'home' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
           {% endif %}
+
         </ul>
       </nav>      
     </header>
@@ -47,8 +49,9 @@
 </html>
 
 {% comment %} TODO: 
-#TODO: left at Specifying the default redirect after logging in
+#TODO: left at Signing up new users
 TODO: login doesn't see their cat index page in Specifying the default redirect after logging in and the form disappears
+TODO:  login and sign up missing in nav but i do see http://127.0.0.1:8000/accounts/signup/ signsup successfully
 {% endcomment %}
 
 

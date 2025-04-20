@@ -24,6 +24,7 @@ urlpatterns = [
     path('cats/<int:cat_id>/remove-toy/<int:toy_id>/', views.remove_toy, name='remove-toy'),
     path('', views.Home.as_view(), name='home'),
     # path('accounts/', include('django.contrib.auth.urls')), 
+    path('accounts/signup/', views.signup, name='signup'),
 
 ]
 
